@@ -12,79 +12,89 @@
 </head>
 
 <body>
-  <label for="realm">Choose a Relm:</label>
-  <select id="realm">
-    <option value="TimeSpace" selected>TimeSpace</option>
-    <option value="LifeDoom">LifeDoom</option>
-    <!--<option value="LightVoid">LightVoid</option>-->
-    <option value="BreathBlood">BreathBlood</option>
-    <option value="WarPeace">WarPeace</option>
-    <option value="HopeRage">HopeRage</option>
-    <option value="NightDay">NightDay</option>
-    <option value="GriefGrace">GriefGrace</option>
-    <option value="FaithFangs">FaithFangs</option>
-    <option value="WeedPants">WeedPants</option>
-    <option value="DirtDreams">DirtDreams</option>
-    <option value="SeaSky">SeaSky</option>
-    <!--<option value="MindHeart">MindHeart</option>-->
-  </select>
-  
-    <label for="month">Choose a Month:</label>
-  <select id="month">
-    <option value="0" selected>July</option>
-    <option value="1">August</option>
-    <option value="2">September</option>
-    <option value="3">October</option>
-    <option value="4">November</option>
-    <option value="5">December</option>
-    <option value="6">Decembruary</option>
-    <option value="7">January</option>
-    <option value="8">Febuary</option>
-    <option value="9">March</option>
-    <option value="10">April</option>
-    <option value="11">May</option>
-    <option value="12">June</option>
-  </select>
-    <label for="day">Choose a Day:</label>
-  <select id="day">
-    <option value="1" selected>1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-    <option value="13">13</option>
-    <option value="14">14</option>
-    <option value="15">15</option>
-    <option value="16">16</option>
-    <option value="17">17</option>
-    <option value="18">18</option>
-    <option value="19">19</option>
-    <option value="20">20</option>
-    <option value="21">21</option>
-    <option value="22">22</option>
-    <option value="23">23</option>
-    <option value="24">24</option>
-    <option value="25">25</option>
-    <option value="26">26</option>
-    <option value="27">27</option>
-    <option value="28">28</option>
-    <option value="29">29</option>
-    <option value="30">30</option>
-  </select>
-  
-  <label for="year">Year:</label>
-  <input type="number" id="year" name="year" min=0 value=921>
-  
-  <button id="submit">Submit</button>
-  
-  <div>
+  <div id="inputs">
+    <span id = 'realm-div'>
+      <label for="realm">Choose a Relm:</label>
+      <select id="realm">
+        <option value="TimeSpace" selected>TimeSpace</option>
+        <option value="LifeDoom">LifeDoom</option>
+        <!--<option value="LightVoid">LightVoid</option>-->
+        <option value="BreathBlood">BreathBlood</option>
+        <option value="WarPeace">WarPeace</option>
+        <option value="HopeRage">HopeRage</option>
+        <option value="NightDay">NightDay</option>
+        <option value="GriefGrace">GriefGrace</option>
+        <option value="FaithFangs">FaithFangs</option>
+        <option value="WeedPants">WeedPants</option>
+        <option value="DirtDreams">DirtDreams</option>
+        <option value="SeaSky">SeaSky</option>
+        <!--<option value="MindHeart">MindHeart</option>-->
+      </select>
+    </span>
+
+    <span id="month-div">
+      <label for="month">Choose a Month:</label>
+      <select id="month">
+        <option value="0" selected>July</option>
+        <option value="1">August</option>
+        <option value="2">September</option>
+        <option value="3">October</option>
+        <option value="4">November</option>
+        <option value="5">December</option>
+        <option value="6">Decembruary</option>
+        <option value="7">January</option>
+        <option value="8">Febuary</option>
+        <option value="9">March</option>
+        <option value="10">April</option>
+        <option value="11">May</option>
+        <option value="12">June</option>
+      </select>
+    </span>
+
+    <span id="day-div">
+      <label for="day">Choose a Day:</label>
+      <select id="day">
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+        <option value="26">26</option>
+        <option value="27">27</option>
+        <option value="28">28</option>
+        <option value="29">29</option>
+        <option value="30">30</option>
+      </select>
+    </span>
+
+    <span id="year-div">
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" min=0 value=921>
+    </span>
+
+    <button id="submit">Submit</button>
+  </div>
+  <div id="outputs">
     Sun sign: <span id="sun-sign"></span>  ||  Moon sign: <span id="moon-sign"></span>  ||  Wild sign: <span id="wild-sign"></span>
   </div>
     
