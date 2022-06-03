@@ -1,0 +1,132 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>13 Realms Starsigns</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+</head>
+
+<body>
+  <label for="realm">Choose a Relm:</label>
+  <select id="realm">
+    <option value="TimeSpace" selected>TimeSpace</option>
+    <option value="LifeDoom">LifeDoom</option>
+    <!--<option value="LightVoid">LightVoid</option>-->
+    <option value="BreathBlood">BreathBlood</option>
+    <option value="WarPeace">WarPeace</option>
+    <option value="HopeRage">HopeRage</option>
+    <option value="NightDay">NightDay</option>
+    <option value="GriefGrace">GriefGrace</option>
+    <option value="FaithFangs">FaithFangs</option>
+    <option value="WeedPants">WeedPants</option>
+    <option value="DirtDreams">DirtDreams</option>
+    <option value="SeaSky">SeaSky</option>
+    <!--<option value="MindHeart">MindHeart</option>-->
+  </select>
+  
+    <label for="month">Choose a Month:</label>
+  <select id="month">
+    <option value="0" selected>July</option>
+    <option value="1">August</option>
+    <option value="2">September</option>
+    <option value="3">October</option>
+    <option value="4">November</option>
+    <option value="5">December</option>
+    <option value="6">Decembruary</option>
+    <option value="7">January</option>
+    <option value="8">Febuary</option>
+    <option value="9">March</option>
+    <option value="10">April</option>
+    <option value="11">May</option>
+    <option value="12">June</option>
+  </select>
+    <label for="day">Choose a Day:</label>
+  <select id="day">
+    <option value="1" selected>1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+    <option value="11">11</option>
+    <option value="12">12</option>
+    <option value="13">13</option>
+    <option value="14">14</option>
+    <option value="15">15</option>
+    <option value="16">16</option>
+    <option value="17">17</option>
+    <option value="18">18</option>
+    <option value="19">19</option>
+    <option value="20">20</option>
+    <option value="21">21</option>
+    <option value="22">22</option>
+    <option value="23">23</option>
+    <option value="24">24</option>
+    <option value="25">25</option>
+    <option value="26">26</option>
+    <option value="27">27</option>
+    <option value="28">28</option>
+    <option value="29">29</option>
+    <option value="30">30</option>
+  </select>
+  
+  <label for="year">Year:</label>
+  <input type="number" id="year" name="year" min=0 value=921>
+  
+  <button id="submit">Submit</button>
+  
+  <div>
+    Sun sign: <span id="sun-sign"></span>  ||  Moon sign: <span id="moon-sign"></span>  ||  Wild sign: <span id="wild-sign"></span>
+  </div>
+    
+  <script>
+    let starsigns=["Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Ophiuchus","Capricorn","Aquarius","Pisces","Aries","Taurus","Gemini"]
+
+    let realmrates = {"TimeSpace":1,
+                      "LifeDoom":0.75,
+                      "LightVoid":0,
+                      "BreathBlood":0.83,
+                      "WarPeace":0.666,
+                      "HopeRage":0.73,
+                      "NightDay":0.85,
+                      "GriefGrace":0.18,
+                      "FaithFangs":0.9,
+                      "WeedPants":1.4,
+                      "DirtDreams":0.46,
+                      "SeaSky":0.58,
+                      "MindHeart":1} //7 6 17 43 12 72// 05 02 899
+
+    document.getElementById("submit").addEventListener("click", function(){
+      calculateStarsign()
+    });
+    
+    function calculateStarsign(){
+      let year = document.getElementById("year").value
+      let month = document.getElementById("month").value
+      let day = document.getElementById("day").value
+      
+      let daycount = (year*(13*30)) + (month * 30) + day
+
+      let realm = document.getElementById("realm").value
+      let realmrate = Math.round((realmrates[realm] * daycount) % 13)
+      let starsign = starsigns[realmrate]
+
+      let wildsignrate = Math.round(( (Math.log(Math.pow(daycount, 4.13)) * Math.pow(10,9) ) - Math.trunc(Math.log(Math.pow(daycount,4.13))) * 100) % 13)
+      let wildsign = starsigns[wildsignrate]
+
+      document.getElementById("sun-sign").innerHTML = starsigns[month]
+      document.getElementById("moon-sign").innerHTML = starsign
+      document.getElementById("wild-sign").innerHTML = wildsign
+    }
+  </script>
+  
+</body>
