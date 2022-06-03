@@ -95,11 +95,11 @@
     <button id="submit">Submit</button>
   </div>
   <div id="outputs">
-    Sun sign: <span id="sun-sign"></span>  ||  Moon sign: <span id="moon-sign"></span>  ||  Wild sign: <span id="wild-sign"></span>
+    Sun sign: <span id="sun-sign"></span>  ||  Moon sign: <span id="moon-sign"></span>  ||  Wild sign: <span id="wild-sign"></span>  ||  True sign: <span id="true-sign"></span>
   </div>
     
   <script>
-    let starsigns=["Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Ophiuchus","Capricorn","Aquarius","Pisces","Aries","Taurus","Gemini"]
+    let starsigns=["Cancer","Leo","Eel","Libra","Scorpio","Rat King","Ophiuchus","Capricorn","Aquarius","Platypus","Aries","Taurus","Gemini"]
 
     let realmrates = {"TimeSpace":1,
                       "LifeDoom":0.75,
@@ -133,10 +133,22 @@
       let wildsignrate = Math.round(( (Math.log(Math.pow(daycount, 4.13)) * Math.pow(10,9) ) - Math.trunc(Math.log(Math.pow(daycount,4.13))) * 100) % 13)
       let wildsign = starsigns[wildsignrate]
 
+      let signtotal = Number(month) + wildsignrate + realmrate + 3; console.log(month + " || " + wildsignrate + " || " + realmrate + " || " + signtotal)
+      
+      while(signtotal > 13){
+        let tensplace = Math.trunc(signtotal / 13); console.log(tensplace + "||" + signtotal / 13)
+        let onesplace = Math.round(signtotal % 13); console.log(onesplace)
+        signtotal = tensplace + onesplace
+      }
+
       document.getElementById("sun-sign").innerHTML = starsigns[month]
       document.getElementById("moon-sign").innerHTML = starsign
       document.getElementById("wild-sign").innerHTML = wildsign
+      document.getElementById("true-sign").innerHTML = starsigns[signtotal - 1]
     }
+
+
+
   </script>
   
 </body>
