@@ -19,7 +19,7 @@
       <select id="realm">
         <option value="TimeSpace" selected>TimeSpace</option>
         <option value="LifeDoom">LifeDoom</option>
-        <!--<option value="LightVoid">LightVoid</option>-->
+        <option value="LightVoid">LightVoid</option>
         <option value="BreathBlood">BreathBlood</option>
         <option value="WarPeace">WarPeace</option>
         <option value="HopeRage">HopeRage</option>
@@ -29,7 +29,8 @@
         <option value="WeedPants">WeedPants</option>
         <option value="DirtDreams">DirtDreams</option>
         <option value="SeaSky">SeaSky</option>
-        <!--<option value="MindHeart">MindHeart</option>-->
+        <option value="MindHeart">MindHeart</option>
+        <option value="University">University</option>
       </select>
     </span>
 
@@ -50,6 +51,11 @@
         <option value="11">May</option>
         <option value="12">June</option>
       </select>
+    </span>
+
+    <span class="input">
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" min=0 value=921 style="width:15ch">
     </span>
 
     <span id="day-div" class="input">
@@ -86,9 +92,35 @@
         <option value="29">29</option>
         <option value="30">30</option>
       </select>
-
-      <label for="year">Year:</label>
-      <input type="number" id="year" name="year" min=0 value=921 style="width: 8ch">
+      <label for="hour">Hour:</label>
+      <select id="hour">
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+        <option value="25">25</option>
+      </select>
     </span>
 
     <button id="submit" class="input">Submit</button>
@@ -101,11 +133,11 @@
   </div>
 </div>
   <script>
-    let starsigns=["Crab","Coati","Eel","Crocodile","Huskey","Rat King","Hen","Big Cat","Tumbleweed","Platypus","Coelecanth","Ray","Mongoose"]
+    let starsigns=["Crab","Coati","Eel","Crocodile","Huskey","Rat King","Hen","Big Cat","Tumbleweed","Platypus","Coelecanth","Ray","Mongoose", "Crab...2"]
 
     let realmrates = {"TimeSpace":1,
                       "LifeDoom":0.75,
-                      "LightVoid":0,
+                      "LightVoid":-1,
                       "BreathBlood":0.83,
                       "WarPeace":0.666,
                       "HopeRage":0.73,
@@ -115,27 +147,34 @@
                       "WeedPants":1.4,
                       "DirtDreams":0.46,
                       "SeaSky":0.58,
-                      "MindHeart":1} //7 6 17 43 12 72// 05 02 899
+                      "MindHeart":-1,
+                      "University": 0.8} //7 6 17 43 12 72// 05 02 899
 
     document.getElementById("submit").addEventListener("click", function(){
       calculateStarsign()
     });
     
     function calculateStarsign(){
-      let year = document.getElementById("year").value
-      let month = document.getElementById("month").value
-      let day = document.getElementById("day").value
+      let year = Number(document.getElementById("year").value)
+      let month = Number(document.getElementById("month").value)
+      let day = Number(document.getElementById("day").value)
+      let hour = Number(document.getElementById("hour").value) 
       
+      hour = hour + .00001
+
       let daycount = (year*(13*30)) + (month * 30) + day
 
       let realm = document.getElementById("realm").value
-      let realmrate = Math.round((realmrates[realm] * daycount) % 13)
+      let realmrate = Math.round((realmrates[realm] * (daycount + (hour / 26))) % 13); console.log(hour + " || " + daycount + " || " + (daycount + (hour / 26)))
+      if(realmrate < 0){
+        realmrate = -1
+      }
       let starsign = starsigns[realmrate]
 
-      let wildsignrate = Math.round(( (Math.log(Math.pow(daycount, 4.13)) * Math.pow(10,9) ) - Math.trunc(Math.log(Math.pow(daycount,4.13))) * 100) % 13)
+      let wildsignrate = Math.abs(Math.round(( (Math.log(Math.pow((daycount * (hour/26)), 4.13)) * Math.pow(10,9) ) - Math.trunc(Math.log(Math.pow((daycount * (hour/26)),4.13))) * 100) % 13))
       let wildsign = starsigns[wildsignrate]
 
-      let signtotal = Number(month) + wildsignrate + realmrate + 3; console.log(month + " || " + wildsignrate + " || " + realmrate + " || " + signtotal)
+      let signtotal = Number(month) + wildsignrate + realmrate + 3; console.log(month + " || " + realmrate + " || " + wildsignrate + " || " + signtotal)
       
       while(signtotal > 13){
         let tensplace = Math.trunc(signtotal / 13); console.log(tensplace + "||" + signtotal / 13)
