@@ -1,0 +1,29 @@
+#container{
+  display: flex;
+  flex-direction: row; 
+  justify-content: center;
+  padding: 1em;
+  background-color: lightyellow;
+}
+
+#inputs{
+  display: flex;
+  flex-direction: column;
+}
+
+#outputs{
+  display: flex;
+  flex-direction: column;
+}
+
+.input{
+  padding: 0.25em;
+}
+
+.output{
+  padding: 0.5em;
+}
+
+.sign{
+  font-weight: bold;
+}
